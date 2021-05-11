@@ -60,6 +60,27 @@ public class HotelReservationSystem {
         return numOfDays;
     }
 
+public static int isWeekend(String startDate, int numOfDays) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMMyyyy");
+        LocalDate from = LocalDate.parse(startDate, formatter);
+        DayOfWeek day1_OfWeek = DayOfWeek.of(from.get(ChronoField.DAY_OF_WEEK));
+        int count = 0;
+        switch (day1_OfWeek) {
+            case SATURDAY:
+                count = 2 ;
+                break;
+            case SUNDAY:
+                count = 1 ;
+                break;
+            default:
+                count = 0;
+                break;
+
+        }
+        return  count;
+    }
+
+
     public static void main(String[] args) {
 
         System.out.println("Welcome to Hotel Reservation Program");
